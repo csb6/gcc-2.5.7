@@ -653,8 +653,8 @@ extern rtvec gen_rtvec			PROTO((int, ...));
 
 #else
 extern rtx bc_gen_rtx ();
-extern rtx gen_rtx ();
-extern rtvec gen_rtvec ();
+extern rtx gen_rtx (enum rtx_code code, ...);
+extern rtvec gen_rtvec (int n, ...);
 #endif
 
 #ifdef BUFSIZ			/* stdio.h has been included */

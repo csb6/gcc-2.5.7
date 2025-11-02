@@ -391,7 +391,7 @@ static rtx simplify_shift_const	PROTO((rtx, enum rtx_code, enum machine_mode,
 				       rtx, int));
 static int recog_for_combine	PROTO((rtx *, rtx, rtx *));
 static rtx gen_lowpart_for_combine  PROTO((enum machine_mode, rtx));
-static rtx gen_rtx_combine ();  /* This is varargs.  */
+static rtx gen_rtx_combine (enum rtx_code code, ...);
 static rtx gen_binary		PROTO((enum rtx_code, enum machine_mode,
 				       rtx, rtx));
 static rtx gen_unary		PROTO((enum rtx_code, enum machine_mode, rtx));
@@ -8138,11 +8138,9 @@ gen_lowpart_for_combine (mode, x)
 
 /*VARARGS2*/
 static rtx
-gen_rtx_combine (va_alist)
-     va_dcl
+gen_rtx_combine (enum rtx_code code, ...)
 {
   va_list p;
-  enum rtx_code code;
   enum machine_mode mode;
   int n_args;
   rtx args[3];
@@ -8150,8 +8148,7 @@ gen_rtx_combine (va_alist)
   char *fmt;
   rtx rt;
 
-  va_start (p);
-  code = va_arg (p, enum rtx_code);
+  va_start (p, code);
   mode = va_arg (p, enum machine_mode);
   n_args = GET_RTX_LENGTH (code);
   fmt = GET_RTX_FORMAT (code);

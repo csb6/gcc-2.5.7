@@ -186,11 +186,11 @@ extern char *getenv ();
 extern FILE *fdopen ();
 extern char *version_string;
 extern struct tm *localtime ();
-extern int sys_nerr;
+extern __const int sys_nerr;
 #if defined(bsd4_4)
 extern const char *const sys_errlist[];
 #else
-extern char *sys_errlist[];
+extern __const char *__const sys_errlist[];
 #endif
 extern int parse_escape ();
 

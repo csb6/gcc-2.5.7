@@ -7,6 +7,9 @@
 #ifndef _VARARGS_H
 #define _VARARGS_H
 
+#ifdef __APPLE__
+#include <stdarg.h>
+#else
 #ifdef __sparc__
 #include <va-sparc.h>
 #else
@@ -119,6 +122,7 @@ typedef void *__gnuc_va_list;
 #endif /* not spur */
 #endif /* not sparc */
 #endif /* not _VARARGS_H */
+#endif
 
 /* Define va_list from __gnuc_va_list.  */
 

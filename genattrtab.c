@@ -359,7 +359,7 @@ rtx arg_pointer_rtx;
 static rtx attr_rtx		PROTO((enum rtx_code, ...));
 static char *attr_printf	PROTO((int, char *, ...));
 #else
-static rtx attr_rtx ();
+static rtx attr_rtx (enum rtx_code code, ...);
 static char *attr_printf ();
 #endif
 
@@ -524,11 +524,9 @@ attr_hash_add_string (hashcode, str)
 
 /*VARARGS1*/
 static rtx
-attr_rtx (va_alist)
-     va_dcl
+attr_rtx (enum rtx_code code, ...)
 {
   va_list p;
-  enum rtx_code code;
   register int i;		/* Array indices...			*/
   register char *fmt;		/* Current rtx's format...		*/
   register rtx rt_val;		/* RTX to return to caller...		*/
@@ -536,8 +534,7 @@ attr_rtx (va_alist)
   register struct attr_hash *h;
   struct obstack *old_obstack = rtl_obstack;
 
-  va_start (p);
-  code = va_arg (p, enum rtx_code);
+  va_start (p, code);
 
   /* For each of several cases, search the hash table for an existing entry.
      Use that entry if one is found; otherwise create a new RTL and add it

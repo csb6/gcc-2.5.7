@@ -277,18 +277,15 @@ extern int max_stack_depth;
 
 /*VARARGS2*/
 rtx
-gen_rtx (va_alist)
-     va_dcl
+gen_rtx (enum rtx_code code, ...)
 {
   va_list p;
-  enum rtx_code code;
   enum machine_mode mode;
   register int i;		/* Array indices...			*/
   register char *fmt;		/* Current rtx's format...		*/
   register rtx rt_val;		/* RTX to return to caller...		*/
 
-  va_start (p);
-  code = va_arg (p, enum rtx_code);
+  va_start (p, code);
   mode = va_arg (p, enum machine_mode);
 
   if (code == CONST_INT)
@@ -397,15 +394,13 @@ gen_rtx (va_alist)
 
 /*VARARGS1*/
 rtvec
-gen_rtvec (va_alist)
-     va_dcl
+gen_rtvec (int n, ...)
 {
-  int n, i;
+  int i;
   va_list p;
   rtx *vector;
 
-  va_start (p);
-  n = va_arg (p, int);
+  va_start (p, n);
 
   if (n == 0)
     return NULL_RTVEC;		/* Don't allocate an empty rtvec...	*/

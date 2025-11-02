@@ -906,18 +906,15 @@ bc_emit_bytecode (bytecode)
    of literal values in the call.  First argument is the instruction, the
    remaining arguments are literals of size HOST_WIDE_INT or smaller. */
 void
-bc_emit_instruction (va_alist)
-     va_dcl
+bc_emit_instruction (enum bytecode_opcode opcode, ...)
 {
   va_list arguments;
-  enum bytecode_opcode opcode;
   int nliteral, instruction;
 
 
-  va_start (arguments);
+  va_start (arguments, opcode);
 
   /* Emit instruction bytecode */
-  opcode = va_arg (arguments, enum bytecode_opcode);
   bc_emit_bytecode (opcode);
   instruction = (int) opcode;
 

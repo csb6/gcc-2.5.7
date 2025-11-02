@@ -2066,8 +2066,7 @@ expand_call (exp, target, ignore)
    move memory references across the non-const call.  */
 
 void
-emit_library_call (va_alist)
-     va_dcl
+emit_library_call (rtx fun, ...)
 {
   va_list p;
   /* Total size in bytes of all the stack-parms scanned so far.  */
@@ -2077,7 +2076,6 @@ emit_library_call (va_alist)
   register int argnum;
   enum machine_mode outmode;
   int nargs;
-  rtx fun;
   rtx orgfun;
   int inc;
   int count;
@@ -2092,8 +2090,8 @@ emit_library_call (va_alist)
   /* library calls are never indirect calls.  */
   int current_call_is_indirect = 0;
 
-  va_start (p);
-  orgfun = fun = va_arg (p, rtx);
+  va_start (p, fun);
+  orgfun = fun;
   no_queue = va_arg (p, int);
   outmode = va_arg (p, enum machine_mode);
   nargs = va_arg (p, int);
@@ -2335,8 +2333,7 @@ emit_library_call (va_alist)
    If VALUE is nonzero, VALUE is returned.  */
 
 rtx
-emit_library_call_value (va_alist)
-     va_dcl
+emit_library_call_value (rtx fun, ...)
 {
   va_list p;
   /* Total size in bytes of all the stack-parms scanned so far.  */
@@ -2346,7 +2343,6 @@ emit_library_call_value (va_alist)
   register int argnum;
   enum machine_mode outmode;
   int nargs;
-  rtx fun;
   rtx orgfun;
   int inc;
   int count;
@@ -2365,8 +2361,8 @@ emit_library_call_value (va_alist)
   /* library calls are never indirect calls.  */
   int current_call_is_indirect = 0;
 
-  va_start (p);
-  orgfun = fun = va_arg (p, rtx);
+  va_start (p, fun);
+  orgfun = fun;
   value = va_arg (p, rtx);
   no_queue = va_arg (p, int);
   outmode = va_arg (p, enum machine_mode);

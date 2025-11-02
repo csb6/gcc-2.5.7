@@ -1066,9 +1066,9 @@ extern tree build			PROTO((enum tree_code, tree, ...));
 extern tree build_nt			PROTO((enum tree_code, ...));
 extern tree build_parse_node		PROTO((enum tree_code, ...));
 #else
-extern tree build ();
-extern tree build_nt ();
-extern tree build_parse_node ();
+extern tree build (enum tree_code code, ...);
+extern tree build_nt (enum tree_code code, ...);
+extern tree build_parse_node (enum tree_code code, ...);
 #endif
 
 extern tree build_int_2_wide		PROTO((HOST_WIDE_INT, HOST_WIDE_INT));

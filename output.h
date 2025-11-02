@@ -26,13 +26,15 @@ the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
 #endif
 #endif
 
+#include <stdio.h>
+
 /* Output a string of assembler code, substituting insn operands.
    Defined in final.c.  */
 extern void output_asm_insn PROTO((char *, rtx *));
 
 /* Output a string of assembler code, substituting numbers, strings
    and fixed syntactic prefixes.  */
-extern void asm_fprintf ();
+extern void asm_fprintf (FILE *file, ...);
 
 /* Print an integer constant expression in assembler syntax.
    Addition and subtraction are the only arithmetic

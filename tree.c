@@ -2365,18 +2365,15 @@ stabilize_reference_1 (e)
    Constants, decls, types and misc nodes cannot be.  */
 
 tree
-build (va_alist)
-     va_dcl
+build (enum tree_code code, ...)
 {
   va_list p;
-  enum tree_code code;
   register tree t;
   register int length;
   register int i;
 
-  va_start (p);
+  va_start (p, code);
 
-  code = va_arg (p, enum tree_code);
   t = make_node (code);
   length = tree_code_length[(int) code];
   TREE_TYPE (t) = va_arg (p, tree);
@@ -2483,18 +2480,15 @@ build1 (code, type, node)
    or even garbage if their values do not matter.  */
 
 tree
-build_nt (va_alist)
-     va_dcl
+build_nt (enum tree_code code, ...)
 {
   va_list p;
-  register enum tree_code code;
   register tree t;
   register int length;
   register int i;
 
-  va_start (p);
+  va_start (p, code);
 
-  code = va_arg (p, enum tree_code);
   t = make_node (code);
   length = tree_code_length[(int) code];
 
@@ -2509,21 +2503,18 @@ build_nt (va_alist)
    on the temp_decl_obstack, regardless.  */
 
 tree
-build_parse_node (va_alist)
-     va_dcl
+build_parse_node (enum tree_code code, ...)
 {
   register struct obstack *ambient_obstack = expression_obstack;
   va_list p;
-  register enum tree_code code;
   register tree t;
   register int length;
   register int i;
 
   expression_obstack = &temp_decl_obstack;
 
-  va_start (p);
+  va_start (p, code);
 
-  code = va_arg (p, enum tree_code);
   t = make_node (code);
   length = tree_code_length[(int) code];
 

@@ -62,11 +62,12 @@ the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
 #endif
 #endif
 
-extern int errno, sys_nerr;
+extern int errno;
+extern __const int sys_nerr;
 #if defined(bsd4_4)
 extern const char *const sys_errlist[];
 #else
-extern char *sys_errlist[];
+extern __const char *__const sys_errlist[];
 #endif
 
 /* Name with which this program was invoked.  */

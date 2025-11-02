@@ -625,8 +625,8 @@ extern void emit_push_insn PROTO((rtx, enum machine_mode, tree, rtx, int,
 
 /* Emit library call.  These cannot have accurate prototypes since they have
    a variable number of args.  */
-extern void emit_library_call ();
-extern rtx emit_library_call_value ();
+extern void emit_library_call (rtx fun, ...);
+extern rtx emit_library_call_value (rtx fun, ...);
 
 /* Expand an assignment that stores the value of FROM into TO. */
 extern rtx expand_assignment PROTO((tree, tree, int, int));

@@ -2679,18 +2679,15 @@ output_addr_const (file, x)
    We handle alternate assembler dialects here, just like output_asm_insn.  */
 
 void
-asm_fprintf (va_alist)
-     va_dcl
+asm_fprintf (FILE *file, ...)
 {
   va_list argptr;
-  FILE *file;
   char buf[10];
   char *p, *q, c;
   int i;
 
-  va_start (argptr);
+  va_start (argptr, file);
 
-  file = va_arg (argptr, FILE *);
   p = va_arg (argptr, char *);
   buf[0] = '%';
 
