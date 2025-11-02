@@ -1,3 +1,6 @@
+GCC version 2.5.7 with some modifications to get it building on a
+modern system. (original README below)
+
 This directory contains the version 2.5.7 release of the GNU C
 compiler.  It includes all of the support for compiling C++ and
 Objective C, including a run-time library for Objective C.
